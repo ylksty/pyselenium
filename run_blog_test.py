@@ -18,6 +18,6 @@ if __name__ == '__main__':
                             title='cgtz测试报告',
                             description='环境win7 浏览器:chrome')
     discover = unittest.defaultTestLoader.discover('./blog/test_case',
-                                                   pattern='*_sta.py')
+                                                   pattern='*_appsta.py')
     runner.run(discover)
     fp.close()
