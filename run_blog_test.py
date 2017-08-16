@@ -11,7 +11,8 @@ def remove_dir(dir):
 if __name__ == '__main__':
     funs.del_files('./blog/report/images')
     funs.del_files('./blog/report/logs')
-    now = time.strftime("%Y-%m-%d_%H:%M:%S")
+    # now = time.strftime("%Y-%m-%d_%H:%M:%S")
+    now = time.strftime("%Y-%m-%d")
     filename = './blog/report/logs/' + now + '_' + 'result.html'
     fp = open(filename, 'wb')
     runner = HTMLTestRunner(stream=fp,
