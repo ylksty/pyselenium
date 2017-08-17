@@ -15,34 +15,40 @@ class loginTest(unittest.TestCase):
     def test_test(self):
         now = time.strftime("%Y-%m-%d_%H:%M:%S")
         driver = webdriver.Remote('http://0.0.0.0:4723/wd/hub', {"platformName": "Android", "platformVersion": "6.0", "appPackage": "cgtz.com.cgtz",
-                    "appActivity": ".ui.LoginNewActivity", "deviceName": "deviceName", "time": now})
+                    "appActivity": ".ui.MainActivity", "deviceName": "deviceName", "time": now})
 
-        print(driver.current_activity)
-        # function.insert_img(driver, 'appogin')
+        # sleep(1)
+        # print('1' + driver.current_activity) # .ui.Guide_activity
+        # driver.swipe(start_x=350, start_y=250, end_x=20, end_y=250, duration=200)
+        # sleep(1)
+        # driver.swipe(start_x=250, start_y=250, end_x=20, end_y=250, duration=200)
+        # sleep(1)
+        # driver.swipe(start_x=250, start_y=250, end_x=20, end_y=250, duration=200)
+        # sleep(1)
+        # driver.swipe(start_x=250, start_y=250, end_x=20, end_y=250, duration=200)
+        # sleep(1)
+        # print('2' + driver.current_activity)
 
-        # el = driver.find_element_by_accessibility_id("cgtz.com.cgtz.ui.LoginNewActivity:id/et_phone_num")
-        # action = TouchAction(driver)
-        # action.tap(el).perform()
-
-        # els = driver.find_elements_by_android_uiautomator('new UiSelector().clickable(true)')
-        # print(els)
         action = TouchAction(driver)
-        action.tap(x=200, y=200).release().perform()
-        sleep(1)
-        print(driver.current_activity)
+        el_mine = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/layout_main_mine")')
+        action.tap(element=el_mine).release().perform() # 点击我的
+        print('3' + driver.current_activity) # .ui.Guide_activity
+        action.tap(x=200, y=200).release().perform() # 指引点击
+        print('4' + driver.current_activity) # .ui.LoginNewActivity
         el_button = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/tv_login")')
-        action.tap(element=el_button).release().perform()
-        sleep(1)
+        action.tap(element=el_button).release().perform() # 点击登录
 
-        el_phone = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/et_phone_num$")')
-        driver.set_value(el_phone, '18658870960')
+        el_phone = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/et_phone_num")')
+        driver.set_value(el_phone, '18658870960') # 输入手机
         el_pass = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/et_pwd")')
-        driver.set_value(el_pass, 'ssssss2')
-        action.tap(element=el_button).release().perform()
-        sleep(1)
-        print(driver.current_activity)
+        driver.set_value(el_pass, 'ssssss2') # 输入密码
+        action.tap(element=el_button).release().perform() # 点击登录
+        print('5' + driver.current_activity)
 
-        # sleep(5)
+        el_asklater = driver.find_element_by_android_uiautomator('new UiSelector().resourceIdMatches(".*id/tv_first_login_left")')
+        action.tap(element=el_asklater).release().perform() # 点击以后再说
+
+        sleep(5)
 
         driver.quit()
 
