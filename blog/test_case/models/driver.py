@@ -1,5 +1,4 @@
 from selenium.webdriver import Remote
-#from selenium import webdriver
 
 def browser () :
     # driver = webdriver.Chrome('/usr/bin/chromedriver')

@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from .base import Page
 from time import sleep
 
-class login(Page):
+class login(Page) :
     '''
     用户登录页面
     '''
